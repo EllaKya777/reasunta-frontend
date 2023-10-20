@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 
 // type InputElProps = {
@@ -6,14 +7,34 @@ import { useState } from "react";
 //   };
 
 const InputEl = ({ onAddItem }) => {
-    const [item, setItem] = useState('');
+   // const [item, setItem] = useState('');
+
+    const dataItems = ['t-short', 'pan', 'mag']
+    const [items, setItems] = useState(dataItems);   
+    const [noResults, setNoResults] = useState(false);
+
+    const [searchItem, setSearchItem] =useState('')
+
+    useEffect(() => {
+        let filteredItems = dataItems;
+      
+        if (searchItem !== "") {
+          filteredItems = filteredItems.filter((item) =>
+            item.toLowerCase().includes(searchItem.toLowerCase())
+          );
+        }
+      
+        setItems(filteredItems);
+        setNoResults(filteredItems.length === 0);
+      }, [searchItem]);
+    
  
 
     const handleSubmit= (e) => {
        e.preventDefault();
-       if(item.trim() !== '') {
-        setItem('')
-        onAddItem(item);
+       if(searchItem.trim() !== '') {
+        setSearchItem('')
+        onAddItem(searchItem);
        }
     }
     
@@ -21,16 +42,19 @@ const InputEl = ({ onAddItem }) => {
 
   return (
   <>
+  {noResults && (
+        <p>There is nothing found for your request. Please change your check request.</p>
+      )}
   <form  onSubmit={handleSubmit}>
     <input 
     type='text' 
     className='newItem'
     placeholder="Add New Item"
-    value={item}
-    onChange={(e) => setItem(e.target.value)}
+    value={searchItem}
+    onChange={(e) => setSearchItem(e.target.value)}
     /> 
     <label htmlFor='newItem'></label>
-    <button type='submit' id='addItem'>ADD</button>
+    {!noResults && (searchItem.length !==0) &&(<button type='submit' id='addItem'>ADD</button>)}
     </form>
   </>
   )
