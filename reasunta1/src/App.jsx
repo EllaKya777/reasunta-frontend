@@ -1,6 +1,6 @@
 import './index.css';
 import QRCode from 'qrcode.react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import WebSocket from './assets/webSocket';
 import Partners from './assets/Partners'
 import MainSeller from './components/MainSeller';
@@ -34,30 +34,78 @@ function App() {
     return <QRCode value={jsonString} size={200} />;
   };
 
+  const formStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    maxWidth: '300px',
+    margin: '0 auto',
+  };
+
+  const labelStyle = {
+    fontSize: '16px',
+    fontWeight: 'bold',
+    margin: '5px 0',
+  };
+
+  const inputStyle = {
+    padding: '10px',
+    margin: '5px 0',
+    border: '1px solid #ccc',
+    borderRadius: '4px',
+    width: '100%',
+  };
+
   return (
     <div className="App">
       <div>
-        <WebSocket reference={randomId} />
-        <Partners />
+        <WebSocket reference={randomId}/>
         <MainSeller />
-        <form>
-          <br />
-          <label>Account No:</label>
-          <input type="text" name="accountNo" value={formData.accountNo} onChange={handleChange} />
-          <br />
-          <label>Amount:</label>
-          <input type="number" name="amount" value={formData.amount} onChange={handleChange} />
-          <br />
-          <label>Bank ID:</label>
-          <input type="text" name="bankId" value={formData.bankId} onChange={handleChange} />
-          <br />
-          <label>Seller Bank:</label>
-          <input type="text" name="sellerBank" value={formData.sellerBank} onChange={handleChange} />
-          <br />
-          <label>Description:</label>
-          <input type="text" name="description" value={formData.description} onChange={handleChange} />
-          <br />
-          <button onClick={generateQRCode}>Generate QR Code</button>
+        <Partners />
+        <form style={formStyle}>
+          <label style={labelStyle}>Account No:</label>
+          <input
+              type="text"
+              name="accountNo"
+              value={formData.accountNo}
+              onChange={handleChange}
+              style={inputStyle}
+          />
+
+          <label style={labelStyle}>Amount:</label>
+          <input
+              type="number"
+              name="amount"
+              value={formData.amount}
+              onChange={handleChange}
+              style={inputStyle}
+          />
+
+          <label style={labelStyle}>Bank ID:</label>
+          <input
+              type="text"
+              name="bankId"
+              value={formData.bankId}
+              onChange={handleChange}
+              style={inputStyle}
+          />
+
+          <label style={labelStyle}>Seller Bank:</label>
+          <input
+              type="text"
+              name="sellerBank"
+              value={formData.sellerBank}
+              onChange={handleChange}
+              style={inputStyle}
+          />
+
+          <label style={labelStyle}>Description:</label>
+          <input
+              type="text"
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+              style={inputStyle}
+          />
         </form>
 
         {generateQRCode()}
