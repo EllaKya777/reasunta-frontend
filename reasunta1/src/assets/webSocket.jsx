@@ -1,38 +1,34 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import SockJS from 'sockjs-client/dist/sockjs';
 import Stomp from 'stompjs';
 
-const WebSocket = () => {
+const WebSocket = ({reference}) => {
 
-    const [messages, setMessages] = useState([]);
+    const [message, setMessage] = useState('');
 
     useEffect(() => {
         const socket = new SockJS('http://localhost:8888/ws');
         const client = Stomp.over(socket);
-    
+
         client.connect({}, () => {
-          client.subscribe('/user/notifications', (message) => {
-            const receivedMessage = JSON.parse(message.content);
-            setMessages((prevMessages) => [...prevMessages, receivedMessage]);
-            
-          });
+            client.subscribe('/user/notifications', (data) => {
+                console.log(data, " RECEIVED MESSAGE")
+                const receivedMessage = JSON.parse(data.body);
+                setMessage(receivedMessage);
+            });
 
-          console.log(messages, " RECEIVED MESSAGE")
-
-        //   client.send("/app/payment/" + "REF000005", {});
+            client.send("/app/payment/" + reference, {});
         });
-    
+
         // return () => {
         //   client.disconnect();
         // };
-      }, []);
+    }, []);
 
     return (
         <div>
             <ul>
-                {messages.map((message) => (
-                    <li key={message.id}>{message.content}</li>
-                ))}
+                <li key={message.text}>{message.text}</li>
             </ul>
         </div>
     );
