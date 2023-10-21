@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import SockJS from 'sockjs-client/dist/sockjs';
 import Stomp from 'stompjs';
 
@@ -7,7 +7,7 @@ const WebSocket = ({reference}) => {
     const [message, setMessage] = useState('');
 
     useEffect(() => {
-        const socket = new SockJS('http://localhost:8888/ws');
+        const socket = new SockJS('http://10.224.8.54:8888/ws');
         const client = Stomp.over(socket);
 
         client.connect({}, () => {
