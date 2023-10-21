@@ -59,6 +59,8 @@ function App() {
     <div className="App">
       <div>
         <WebSocket reference={randomId}/>
+        <MainSeller />
+        <Partners />
         <form style={formStyle}>
           <label style={labelStyle}>Account No:</label>
           <input
