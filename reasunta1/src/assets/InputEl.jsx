@@ -6,14 +6,13 @@ import { FaMugHot, FaTshirt, FaShoppingBag, FaCalendarAlt, FaPen } from 'react-i
 const InputEl = ({ onAddItem }) => {
 
   const dataItems = [
-   'T-shirt',
-    'Pen', 
-   'Mug', 
-   'Bag', 
+    'T-shirt',
+    'Pen',
+    'Mug',
+    'Shopping bag',
     'Calendar', 
   ];
-  
-  console.log(dataItems)
+
     const [items, setItems] = useState(dataItems);   
     const [noResults, setNoResults] = useState(false);
 
@@ -84,11 +83,11 @@ const InputEl = ({ onAddItem }) => {
   return (
   <>
   <div style={{color: 'gold', marginTop: '1rem'}}>
-<span><FaMugHot /> Mug</span>
-<span><FaTshirt /> T-Shirt</span>
-<span><FaShoppingBag /> Shoppin bag </span>
-<span><FaCalendarAlt /> Calendar</span>
-<span><FaPen /> Pen</span>
+<span className='listItem' onClick={(e) => setSearchItem('Mug')}><FaMugHot /> Mug</span>
+<span className='listItem' onClick={(e) => setSearchItem('T-Shirt')}><FaTshirt /> T-Shirt</span>
+<span className='listItem' onClick={(e) => setSearchItem('Shopping bag')}><FaShoppingBag /> Shopping bag </span>
+<span className='listItem' onClick={(e) => setSearchItem('Calendar')}><FaCalendarAlt /> Calendar</span>
+<span className='listItem' onClick={(e) => setSearchItem('Pen')}><FaPen /> Pen</span>
 </div>
   {noResults && (
         <p>There is nothing found for your request. Please change your check request.</p>

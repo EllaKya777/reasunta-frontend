@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 const ItemSearch = () => {
 
-    const dataItems = ['t-short', 'pan', 'mag']
+    const dataItems = ['Mug', 'T-Shirt', 'Shopping bag', 'Calendar', 'Pen']
     const [items, setItems] = useState(dataItems);   
     const [noResults, setNoResults] = useState(false);
 

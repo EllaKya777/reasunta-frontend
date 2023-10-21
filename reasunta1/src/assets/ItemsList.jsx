@@ -12,7 +12,7 @@ localStorage.setItem('items', JSON.stringify(filteredItems));
       <ul>
         {items.map((item, index) => (
           <li key={index}>
-            {item.icon} {icon.name}
+            {item}
           <button onClick={()=>deleteItem(index)} >X</button>
           </li>
         ))}
