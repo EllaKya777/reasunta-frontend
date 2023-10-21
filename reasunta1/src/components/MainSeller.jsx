@@ -4,6 +4,7 @@ import InputEl from '../assets/InputEl'
 import ItemsList from '../assets/ItemsList'
 import QrGenerator from '../assets/QrGenerator';
 import { useOrderContext } from '../OrderContext';
+import WebSocket from '../assets/webSocket';
 
 const MainSeller = () => {
     const [items, setItems] = useState([]);
@@ -23,7 +24,7 @@ const MainSeller = () => {
         <ItemsList items={items} setItems={setItems}/>
         {confirmed && <p style={{ color: 'green', fontWeight: 'bold' }} >Confirmed!</p>}  
       <QrGenerator />
-     
+      <WebSocket />
     </main>
   )
 }
