@@ -2,6 +2,8 @@ import './index.css';
 import QRCode from 'qrcode.react';
 import React, { useState } from 'react';
 import WebSocket from './assets/webSocket';
+import Partners from './assets/Partners'
+import MainSeller from './components/MainSeller';
 
 function App() {
 
@@ -35,7 +37,9 @@ function App() {
   return (
     <div className="App">
       <div>
-        <WebSocket reference={randomId}/>
+        <WebSocket reference={randomId} />
+        <Partners />
+        <MainSeller />
         <form>
           <br />
           <label>Account No:</label>

@@ -1,4 +1,3 @@
-import { FaBeer } from 'react-icons/fa';
 
   const ItemsList = ({ items, setItems }) => {
     const newItems = [...items]
