@@ -20,8 +20,8 @@ const MainSeller = () => {
   return (
     <main className='container'>
         <InputEl onAddItem={handleAddItem} />
-        <ItemsList items={items}/>
-        {confirmed && <p>Confirmed!</p>}  
+        <ItemsList items={items} setItems={setItems}/>
+        {confirmed && <p style={{ color: 'green', fontWeight: 'bold' }} >Confirmed!</p>}  
       <QrGenerator />
      
     </main>

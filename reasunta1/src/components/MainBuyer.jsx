@@ -29,11 +29,11 @@ setItems([]);
 
       
   return (
-    <div style={{ display: 'flex', justifyContent: 'center' }}>
+    <div style={{ display: 'flex',flexDirection: 'column', justifyContent: 'center' }}>
         {items.length !== 0 && 
         <>
       <ItemsList items={items}/>      
-      <button onClick={confirmOrder}>Confirm Order</button>  
+      <button style={{padding: '5px', marginLeft: ' 10rem', marginRight: '10rem'}} onClick={confirmOrder}>Confirm Order</button>  
       </>
         }    
     </div>
