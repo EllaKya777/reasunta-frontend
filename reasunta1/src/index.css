@@ -20,7 +20,8 @@ html, body {
     background-color: #333333;
     color: #fff;
     text-align: center;
-    padding: 1rem
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 .container {
     height: 100vh;
@@ -33,6 +34,12 @@ html, body {
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
+#partner {
+  background-image: url("/fantastic-bank-building.jpg"); /* Relative path to your image */
+  background-size: cover; /* Adjust as needed */
+  background-position: center;
+}
+
 form {
     width: 90%;
     display: flex;
@@ -48,7 +55,9 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-bottom: 0.5rem
+    margin-bottom: 0.5rem;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); 
+    transition: background-color 0.3s, color 0.3s;
   }
 input {
     width: 70%;

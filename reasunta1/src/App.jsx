@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Partners from "./assets/Partners";
 import Footer from "./components/Footer"
 import Header from "./components/Header"
 import MainBuyer from "./components/MainBuyer"
@@ -21,17 +22,18 @@ function App() {
   return (
     <>
     <OrderProvider>
-    <Header title={"Hello"} />  
+    <Header title={"Hello, World"} />  
     <div style={{ display: 'flex', justifyContent: 'center' }}>
-  <span><button onClick={handleSellerClick}>Seller</button></span>
+       <span><button onClick={handleSellerClick}>Seller</button></span>
         <span><button onClick={handleBuyerClick}>Buyer</button></span>
       </div>
-     
+    
       <div>
       {isSeller ? 
       <MainSeller />
        : <MainBuyer/>}
         </div> 
+        <Partners />
     <Footer />
     </OrderProvider>
    </>
