@@ -33,7 +33,9 @@ function App() {
       <MainSeller />
        : <MainBuyer/>}
         </div> 
-        <Partners />
+        {isSeller === false && (
+          <Partners />
+        )}
     <Footer />
     </OrderProvider>
    </>

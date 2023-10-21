@@ -1,11 +1,19 @@
 import React, { useRef } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-
+import { FaMugHot, FaTshirt, FaShoppingBag, FaCalendarAlt, FaPen } from 'react-icons/fa';
 
 const InputEl = ({ onAddItem }) => {
 
-    const dataItems = ['t-short', 'pan', 'mag']
+  const dataItems = [
+   'T-shirt',
+    'Pen', 
+   'Mug', 
+   'Bag', 
+    'Calendar', 
+  ];
+  
+  console.log(dataItems)
     const [items, setItems] = useState(dataItems);   
     const [noResults, setNoResults] = useState(false);
 
@@ -75,6 +83,13 @@ const InputEl = ({ onAddItem }) => {
 
   return (
   <>
+  <div style={{color: 'gold', marginTop: '1rem'}}>
+<span><FaMugHot /> Mug</span>
+<span><FaTshirt /> T-Shirt</span>
+<span><FaShoppingBag /> Shoppin bag </span>
+<span><FaCalendarAlt /> Calendar</span>
+<span><FaPen /> Pen</span>
+</div>
   {noResults && (
         <p>There is nothing found for your request. Please change your check request.</p>
       )}
@@ -83,11 +98,12 @@ const InputEl = ({ onAddItem }) => {
     type='text' 
     className='newItem'
     placeholder="Add New Item"
+    style={{marginTop: '2rem'}}
     value={searchItem}
     onChange={(e) => setSearchItem(e.target.value)}
     /> 
     <label htmlFor='newItem'></label>
-    {!noResults && (searchItem.length !==0) &&(<button type='submit' id='addItem'>ADD</button>)}
+    {!noResults && (searchItem.length !==0) &&(<button style={{marginTop: '2rem'}} type='submit' id='addItem'>ADD</button>)}
     </form>
   </>
   )

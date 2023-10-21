@@ -1,7 +1,5 @@
-// type ItemsListProps = {
-//     items: string[];
-//   };
-  
+import { FaBeer } from 'react-icons/fa';
+
   const ItemsList = ({ items, setItems }) => {
     const newItems = [...items]
     console.log('newItems', newItems);
@@ -14,7 +12,8 @@ localStorage.setItem('items', JSON.stringify(filteredItems));
     return (
       <ul>
         {items.map((item, index) => (
-          <li key={index}>{item}
+          <li key={index}>
+            {item.icon} {icon.name}
           <button onClick={()=>deleteItem(index)} >X</button>
           </li>
         ))}
