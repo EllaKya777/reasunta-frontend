@@ -1,23 +1,32 @@
 import React, { useEffect, useState } from 'react';
-import SockJS from 'sockjs-client';
+import SockJS from 'sockjs-client/dist/sockjs';
 import Stomp from 'stompjs';
 
 const WebSocket = () => {
+
     const [messages, setMessages] = useState([]);
 
     useEffect(() => {
-        const socket = new SockJS('http://localhost:8080/websocket');
-        const stompClient = Stomp.over(socket);
+        const socket = new SockJS('http://localhost:8888/ws');
+        const client = Stomp.over(socket);
+    
+        client.connect({}, () => {
+          client.subscribe('/user/notifications', (message) => {
+            const receivedMessage = JSON.parse(message.content);
+            setMessages((prevMessages) => [...prevMessages, receivedMessage]);
+            
+          });
 
-        stompClient.connect({}, () => {
-            console.log('Connected to STOMP endpoint');
+          console.log(messages, " RECEIVED MESSAGE")
 
-            stompClient.subscribe('/topic/messages', (message) => {
-                const data = JSON.parse(message.body);
-                setMessages((prevMessages) => [...prevMessages, data]);
-            });
+        //   client.send("/app/payment/" + "REF000005", {});
         });
-    }, []);
+    
+        // return () => {
+        //   client.disconnect();
+        // };
+      }, []);
+
     return (
         <div>
             <ul>
