@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import SockJS from 'sockjs-client/dist/sockjs';
 import Stomp from 'stompjs';
 
@@ -7,7 +7,7 @@ const WebSocket = ({reference}) => {
     const [message, setMessage] = useState('');
 
     useEffect(() => {
-        const socket = new SockJS('http://10.224.8.54:8888/ws');
+        const socket = new SockJS('http://localhost:8888/ws');
         const client = Stomp.over(socket);
 
         client.connect({}, () => {
@@ -19,17 +19,11 @@ const WebSocket = ({reference}) => {
 
             client.send("/app/payment/" + reference, {});
         });
-
-        // return () => {
-        //   client.disconnect();
-        // };
     }, []);
 
     return (
         <div>
-            <ul>
-                <li key={message.text}>{message.text}</li>
-            </ul>
+                <div key={message.text}>{message.text}</div>
         </div>
     );
 };

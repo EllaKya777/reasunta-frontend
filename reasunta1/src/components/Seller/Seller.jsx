@@ -1,12 +1,10 @@
 
 import React, { useState } from 'react';
-import InputEl from '../assets/InputEl'
-import ItemsList from '../assets/ItemsList'
-import QrGenerator from '../assets/QrGenerator';
-import { useOrderContext } from '../OrderContext';
-import WebSocket from '../assets/webSocket';
+import InputEl from '../InputEl/InputEl'
+import ItemsList from '../ItemsList/ItemsList'
+import { useOrderContext } from '../../OrderContext';
 
-const MainSeller = () => {
+const Seller = () => {
     const [items, setItems] = useState([]);
     const { confirmed } = useOrderContext();
 
@@ -19,17 +17,15 @@ const MainSeller = () => {
     
 
   return (
-    <main className='container'>
+    <div>
         <InputEl onAddItem={handleAddItem} />
         <ItemsList items={items} setItems={setItems}/>
         {confirmed && <p style={{ color: 'green', fontWeight: 'bold' }} >Confirmed!</p>}  
-      <QrGenerator />
-      <WebSocket />
-    </main>
+    </div>
   )
 }
 
-export default MainSeller
+export default Seller
 
 
 

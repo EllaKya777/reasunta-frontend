@@ -3,120 +3,129 @@
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box
 }
 
-html, body {
-    height: 100vh;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f5f5f5;
-    margin: 0;
-    padding: 0
+html,
+body {
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0
 }
 
-.header, 
+.header,
 .footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #333333;
-    color: #fff;
-    text-align: center;
-    padding: 1rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #333333;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
 .container {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    max-width: 800px;
-    margin: 0 auto;
-    
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  margin: 0 auto;
+
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
-#partners::before {
-  content: "";
-  background-image: url("images/commerzbank.jpg");
+
+.innerContainer {
+  background-image: url('./assets/images/commerzbank.jpg');
   background-size: cover;
   background-position: center;
-  opacity: 0.5;
-  position: absolute;
+  opacity: 0.8;
   width: 100%;
-  height: 100%;
-  z-index: 1; /* Ensure it's positioned behind the content */
+  height: 100vh;
+  z-index: 1;
 }
 
 form {
-    width: 90%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 13px 20px;
 }
+
 button {
-    background-color: #1a4b7e;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 0.5rem;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); 
-    transition: background-color 0.3s, color 0.3s;
-  }
-input {
-    width: 70%;
-    padding: 0.5rem 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 1rem;
+  background-color: #1a4b7e;
+  color: #fff;
+  padding: 0.55rem 1.2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  left: 96%;
+  bottom: 5%;
+  margin-left: 9px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s, color 0.3s;
 }
+
+input {
+  width: 70%;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 li {
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid #ccc;
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
-    border-radius: 5px;
-    background-color: #f9f9f9;
+  background: white;
+  border-radius: 9%;
+  display: inline-block;
+  padding: 0px 0px 0px 10px ;
+  position: relative;
+  margin-left: 22px;
 }
 
 
-  button:hover {
+button:hover {
   background-color: #f9f9f9;
   color: #1a4b7e;
-  border: 1px solid  #1a4b7e;
-  }  
-  span {
-    padding: 1rem
-  }
-  .divider {
-    width: 50%;
-    border: none;
-    border-top: 1px solid #ccc;
-    margin: 10px 0; 
-  }
-
-.listItem {
-  cursor: pointer;
+  border: 1px solid #1a4b7e;
 }
 
- /* Responsive design for mobile devices */
+span {
+  padding: 1rem
+}
+
+.divider {
+  width: 50%;
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 10px 0;
+}
+
+.listItem {
+  background: white;
+  cursor: pointer;
+  padding: 13px 20px;
+  margin: 20px;
+  border-radius: 9%;
+}
+
+/* Responsive design for mobile devices */
 @media (max-width: 768px) {
-    .container {
-     
-    }
-  
-    input[type="text"] {
-      margin-bottom: 0.5rem;
-    }
-  } 
+  .container {}
+
+  input[type="text"] {
+    margin-bottom: 0.5rem;
+  }
+}

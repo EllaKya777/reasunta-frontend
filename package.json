@@ -2,5 +2,8 @@
   "dependencies": {
     "react-qr-code": "^2.0.12",
     "ws": "^8.14.2"
+  },
+  "devDependencies": {
+    "sass": "^1.69.4"
   }
 }

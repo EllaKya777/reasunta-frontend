@@ -1,0 +1,23 @@
+.elementContainer{
+    display: flex;
+    vertical-align: middle;
+    align-items: center;
+    margin: 0 auto;
+    justify-content: center;
+    padding-top: 100px;
+}
+
+.nextBtn{
+    margin-top: 16px;
+    text-decoration: none;
+    color: black;
+    padding: 8px 20px;
+    background-color: white;
+    border-radius: 10px;
+    margin-left: 5px;
+    &:hover{
+        background-color: green;
+        color: white;
+        transition: all 0.3s;
+    }
+}
