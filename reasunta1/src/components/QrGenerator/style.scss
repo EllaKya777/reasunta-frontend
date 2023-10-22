@@ -1,24 +1,48 @@
-.qrContainer{
-  padding-top: 150px;
+.qrContainer {
+  padding-top: 40px;
+
   .formStyle {
     display: flex;
     flex-direction: column;
     max-width: 300px;
     margin: 0 auto;
+
     .labelStyle {
       font-size: 16px;
       font-weight: bold;
       margin: 5px 0;
-    };
+    }
+
+    ;
+
     .inputStyle {
       padding: 10px;
       margin: 5px 0;
       border: 1px solid #ccc;
       border-radius: 4px;
       width: 100%;
-    };
-  };
+    }
+
+    ;
+
+    .productListBlock {
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 4px;
+      width: 100%;
+
+      .productList {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        margin: 4px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: max-content;
+        border-color: black;
+      }
+    }
+  }
+
+  ;
 }
-
-
-

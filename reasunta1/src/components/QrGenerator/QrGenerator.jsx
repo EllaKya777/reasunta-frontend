@@ -81,9 +81,9 @@ export default function QrGenerator() {
                 />
 
                 <label className='labelStyle'>Product list:</label>
-                <ul>
+                <ul className='productListBlock'>
                   {paymentInfo.products.map((item, index) => (
-                    <li key={index}>
+                    <li className='productList' key={index}>
                       {item}
                     </li>
                   ))}
