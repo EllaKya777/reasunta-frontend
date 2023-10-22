@@ -42,7 +42,7 @@ body {
 }
 
 .innerContainer {
-  background-image: url('./assets/images/commerzbank.jpg');
+  background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url('./assets/images/commerzbank.jpg');
   background-size: cover;
   background-position: center;
   opacity: 0.8;
