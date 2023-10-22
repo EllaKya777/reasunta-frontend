@@ -20,7 +20,7 @@ const InputEl = ({ onAddItem }) => {
   const [noResults, setNoResults] = useState(false);
 
   const [searchItem, setSearchItem] = useState('')
-  const [resultAmount, setResultAmount] = useState(0)
+  const [paymentInfo, setPaymentInfo] = useState({ resultAmount: 0, products: [] })
 
   useEffect(() => {
     let filteredItems = dataItems.filter(data => data.name);
@@ -49,12 +49,15 @@ const InputEl = ({ onAddItem }) => {
       onAddItem(searchItem);
     }
 
-    let itemPrice = dataItems.find(data => data.name === searchItem).price;
+    let item = dataItems.find(data => data.name === searchItem);
 
-    setResultAmount(resultAmount + itemPrice);
+    setPaymentInfo({
+        resultAmount: paymentInfo.resultAmount + item.price,
+        products: paymentInfo.products.concat(item.name)
+    });
   }
 
-  console.log(resultAmount)
+  console.log(paymentInfo)
 
   return (
     <>
@@ -79,7 +82,7 @@ const InputEl = ({ onAddItem }) => {
         />
         <label htmlFor='newItem'></label>
         {!noResults && (searchItem.length !== 0) && (<button style={{ marginTop: '1rem' }} type='submit' id='addItem'>ADD</button>)}
-        {resultAmount !== 0 && <Link to='/qr' state={resultAmount} className="nextBtn">Next</Link>}
+        {paymentInfo.resultAmount !== 0 && <Link to='/qr' state={paymentInfo} className="nextBtn">Next</Link>}
       </form>
 
       

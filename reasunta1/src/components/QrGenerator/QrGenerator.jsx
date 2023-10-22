@@ -8,17 +8,22 @@ import { useLocation } from 'react-router-dom'
 export default function QrGenerator() {
     const location = useLocation()
     const randomId = "REF" + Math.random().toString().substr(2, 8);
-    let amount = location.state;
+    let paymentInfo = location.state;
+    let bankId = 'seller_bank';
+    let sellerBank = 'SELLER BANK JSC';
 
     const [formData, setFormData] = useState({
         reference: randomId,
-        accountNo: '',
-        amount: amount,
-        bankId: '',
-        sellerBank: '',
+        accountNo: '10200000001',
+        amount: paymentInfo.resultAmount,
+        bankId: bankId,
+        sellerBank: sellerBank,
         description: '',
-        resultType: 'APPROVED',
+        products: paymentInfo.products,
     });
+
+    const [products, setProducts] = useState()
+    console.log(location.state)
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -31,20 +36,11 @@ export default function QrGenerator() {
 
     const generateQRCode = () => {
         const jsonString = generateJSON();
-        return <QRCode value={jsonString} size={200} />;
+        return <QRCode value={jsonString} size={250} />;
     };
     return (
         <div className='qrContainer'>
             <form className='formStyle'>
-                <label className='labelStyle'>Account No:</label>
-                <input
-                    type="text"
-                    name="accountNo"
-                    value={formData.accountNo}
-                    onChange={handleChange}
-                    className='inputStyle'
-                />
-
                 <label className='labelStyle'>Amount:</label>
                 <input
                     type="number"
@@ -62,6 +58,7 @@ export default function QrGenerator() {
                     value={formData.bankId}
                     onChange={handleChange}
                     className='inputStyle'
+                    disabled
                 />
 
                 <label className='labelStyle'>Seller Bank:</label>
@@ -71,6 +68,7 @@ export default function QrGenerator() {
                     value={formData.sellerBank}
                     onChange={handleChange}
                     className='inputStyle'
+                    disabled
                 />
 
                 <label className='labelStyle'>Description:</label>
@@ -81,6 +79,15 @@ export default function QrGenerator() {
                     onChange={handleChange}
                     className='inputStyle'
                 />
+
+                <label className='labelStyle'>Product list:</label>
+                <ul>
+                  {paymentInfo.products.map((item, index) => (
+                    <li key={index}>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
             </form>
             {generateQRCode()}
             <WebSocket reference={randomId} />
