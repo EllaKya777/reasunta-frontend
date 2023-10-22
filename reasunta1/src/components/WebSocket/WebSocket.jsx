@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
+import './style.scss'
 import SockJS from 'sockjs-client/dist/sockjs';
 import Stomp from 'stompjs';
 
-const WebSocket = ({reference}) => {
+const WebSocket = ({ reference }) => {
 
     const [message, setMessage] = useState('');
 
@@ -22,8 +23,9 @@ const WebSocket = ({reference}) => {
     }, []);
 
     return (
-        <div>
-                <div key={message.text}>{message.text}</div>
+        <div className='websocket'>
+            <label className='wsLabel'>STATUS</label>
+            <div className='websocketMessage' key={message.text}>{message.text}</div>
         </div>
     );
 };

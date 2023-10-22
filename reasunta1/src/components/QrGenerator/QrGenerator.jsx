@@ -40,6 +40,7 @@ export default function QrGenerator() {
     };
     return (
         <div className='qrContainer'>
+            <WebSocket reference={randomId} />
             <form className='formStyle'>
                 <label className='labelStyle'>Amount:</label>
                 <input
@@ -82,15 +83,14 @@ export default function QrGenerator() {
 
                 <label className='labelStyle'>Product list:</label>
                 <ul className='productListBlock'>
-                  {paymentInfo.products.map((item, index) => (
-                    <li className='productList' key={index}>
-                      {item}
-                    </li>
-                  ))}
+                    {paymentInfo.products.map((item, index) => (
+                        <li className='productList' key={index}>
+                            {item}
+                        </li>
+                    ))}
                 </ul>
             </form>
             {generateQRCode()}
-            <WebSocket reference={randomId} />
         </div>
     )
 }
